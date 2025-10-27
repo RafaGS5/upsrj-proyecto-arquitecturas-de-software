@@ -1,0 +1,9 @@
+# ============================================================
+# Politécnica de Santa Rosa
+#
+# Materia: Arquitecturas de Software
+# Profesor: Jesús Salvador López Ortega
+# Grupo: ISW28
+# Archivo: test_main.py
+# Descripción: Archivo de pruebas unitarias para validar el comportamiento de funciones del proyecto
+# ============================================================

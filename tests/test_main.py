@@ -9,7 +9,7 @@
 # ============================================================
 import sys
 import unittest
-from vars import *
+from common.vars import *
 
 sys.path.insert(0, BASE_DIR)
 
@@ -35,5 +35,5 @@ class TestCryptography(unittest.TestCase):
         
         print("Everything fine with cryptography.")
         
-if __name__ == '__main__':
-    unittest.main()
+if __name__ == '_main_':
+   unittest.main()

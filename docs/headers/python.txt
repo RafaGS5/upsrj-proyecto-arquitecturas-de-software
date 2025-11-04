@@ -7,3 +7,17 @@
 # Archivo: test_main.py
 # Descripción: Archivo de pruebas unitarias para validar el comportamiento de funciones del proyecto
 # ============================================================
+
+
+# ============================================================
+# Universidad Politécnica de Santa Rosa Jáuregui
+#
+# Materia: Arquitecturas de Software
+# Profesor: Jesús Salvador López Ortega
+# Grupo: ISW28
+# Archivo: main.py
+# Descripción: Define la ruta /upload para recibir archivos mediante 
+# solicitudes POST. Usa el caso de uso UploadBinaryUseCase junto con 
+# los repositorios FileRepository y JsonRepository para procesar y 
+# almacenar los archivos binarios según el entorno especificado.
+# ============================================================

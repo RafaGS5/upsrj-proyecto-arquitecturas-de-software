@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Binary Uploader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: radial-gradient(circle at top, #0f172a 0%, #020617 40%, #020617 100%);
+      --card-bg: rgba(2, 6, 23, 0.4);
+      --card-border: rgba(148, 163, 184, 0.18);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --error: #ef4444;
+      --success: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      padding: 24px;
+    }
+
+    .wrapper {
+      width: min(430px, 100%);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: 26px 26px 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      background: rgba(15, 118, 241, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      padding: 4px 10px 4px 6px;
+      border-radius: 999px;
+      font-size: 0.63rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .badge-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #0f172a 0%, #0ea5e9 60%, #38bdf8 100%);
+      display: grid;
+      place-items: center;
+      font-size: 0.6rem;
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 6px;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      color: #cbd5f5;
+    }
+
+    .file-input {
+      background: rgba(15, 23, 42, 0.35);
+      border: 1px dashed rgba(148, 163, 184, 0.35);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .file-input:hover {
+      border-color: rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .file-input small {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      margin-top: 4px;
+    }
+
+    select {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      margin-top: 6px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+      border: none;
+      border-radius: 14px;
+      padding: 10px 0;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 14px;
+      color: rgba(148, 163, 184, 0.5);
+      font-size: 0.65rem;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-left: 5px solid var(--success);
+      border-radius: 14px;
+      padding: 14px 16px 14px 14px;
+      min-width: 230px;
+      display: none;
+      gap: 8px;
+      align-items: flex-start;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      display: flex;
+      animation: fadeIn 0.15s ease-out;
+    }
+
+    .toast-title {
+      font-size: 0.72rem;
+      margin-bottom: 4px;
+    }
+
+    .toast-msg {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .dot-success {
+      width: 30px;
+      height: 30px;
+      background: rgba(34, 197, 94, 0.12);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #22c55e;
+      font-weight: 700;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .loading-bar {
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.05);
+      overflow: hidden;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .loading-bar div {
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+      border-radius: 999px;
+      animation: loading 1s linear infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        transform: translateX(-120%);
+      }
+      100% {
+        transform: translateX(300%);
+      }
+    }
+
+    .file-name {
+      margin-top: 6px;
+      font-size: 0.7rem;
+      color: var(--text);
+      word-break: break-all;
+    }
+
+    .error-text {
+      margin-top: 8px;
+      font-size: 0.65rem;
+      color: var(--error);
+      display: none;
+    }
+
+    /* small screens */
+    @media (max-width: 480px) {
+      .card {
+        padding: 22px 18px 20px;
+      }
+      h1 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="badge">
+        <span class="badge-dot">●</span>
+        binary uploader
+      </div>
+      <h1>Upload your binary</h1>
+      <p class="subtitle">Choose the environment and drop your file. We'll store it securely.</p>
+
+      <form id="uploadForm" enctype="multipart/form-data">
+        <label for="file">Binary file</label>
+        <label for="file" class="file-input" id="fileBox">
+          Click to select or drop file here
+          <small>.bin, .exe, .zip, etc.</small>
+          <input type="file" id="file" name="file" required style="display:none" />
+        </label>
+        <div class="file-name" id="fileName"></div>
+
+        <label for="environment" style="margin-top:14px;">Environment</label>
+        <select id="environment" name="environment">
+          <option value="dev">Development</option>
+          <option value="prod">Production</option>
+        </select>
+
+        <button type="submit" id="submitBtn">Upload file</button>
+
+        <div class="loading-bar" id="loader">
+          <div></div>
+        </div>
+        <div class="error-text" id="errorText">Upload failed. Try again.</div>
+      </form>
+
+      <p class="footer">Arquitecturas de Software · UPSRJ</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <div class="dot-success">✓</div>
+    <div>
+      <div class="toast-title" id="toastTitle">Upload complete</div>
+      <div class="toast-msg" id="toastMsg">Your binary was stored successfully.</div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const toast = document.getElementById('toast');
+    const fileInput = document.getElementById('file');
+    const fileBox = document.getElementById('fileBox');
+    const fileName = document.getElementById('fileName');
+    const loader = document.getElementById('loader');
+    const errorText = document.getElementById('errorText');
+    const submitBtn = document.getElementById('submitBtn');
+
+    fileBox.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        fileName.textContent = fileInput.files[0].name;
+      } else {
+        fileName.textContent = '';
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorText.style.display = 'none';
+      loader.style.display = 'block';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Uploading...';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        loader.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Upload file';
+
+        if (response.ok) {
+          const result = await response.json();
+          showToast('Upload complete', 'ID: ' + (result.id ?? 'saved'));
+          form.reset();
+          fileName.textContent = '';
+        } else {
+          errorText.style.display = 'block';
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error);
+        loader.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Upload file';
+        errorText.style.display = 'block';
+      }
+    });
+
+    function showToast(title, msg) {
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

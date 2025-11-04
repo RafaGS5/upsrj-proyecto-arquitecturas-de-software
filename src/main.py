@@ -10,7 +10,7 @@
 # ============================================================
 from cryptography.fernet import Fernet
 from flask import Flask, render_template
-from vars import TEMPLATES_DIR, HOME_HOST
+from common.vars import TEMPLATES_DIR, HOME_HOST
 
 app = Flask(__name__)
 

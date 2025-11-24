@@ -17,25 +17,23 @@
       --success: #22c55e;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       background: var(--bg);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       padding: 24px;
     }
 
-    .wrapper {
-      width: min(430px, 100%);
-    }
+    .container { width: min(980px, 100%); display: grid; gap: 20px; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 900px) { .grid { grid-template-columns: 420px 1fr; } }
 
     .card {
       background: var(--card-bg);
@@ -49,257 +47,151 @@
     }
 
     .badge {
-      display: inline-flex;
-      gap: 6px;
-      align-items: center;
+      display: inline-flex; gap: 6px; align-items: center;
       background: rgba(15, 118, 241, 0.15);
       border: 1px solid rgba(148, 163, 184, 0.15);
-      padding: 4px 10px 4px 6px;
-      border-radius: 999px;
-      font-size: 0.63rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-      color: var(--text);
+      padding: 4px 10px 4px 6px; border-radius: 999px;
+      font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 16px; color: var(--text);
     }
-
-    .badge-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
+    .badge-dot { width: 18px; height: 18px; border-radius: 999px;
       background: radial-gradient(circle, #0f172a 0%, #0ea5e9 60%, #38bdf8 100%);
-      display: grid;
-      place-items: center;
-      font-size: 0.6rem;
-    }
+      display: grid; place-items: center; font-size: 0.6rem; }
 
-    h1 {
-      font-size: 1.35rem;
-      margin: 0 0 6px;
-    }
+    h1 { font-size: 1.35rem; margin: 0 0 6px; }
+    .subtitle { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
 
-    .subtitle {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
-      color: #cbd5f5;
-    }
+    label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; color: #cbd5f5; }
 
     .file-input {
       background: rgba(15, 23, 42, 0.35);
       border: 1px dashed rgba(148, 163, 184, 0.35);
-      border-radius: 14px;
-      padding: 16px;
-      text-align: center;
-      cursor: pointer;
+      border-radius: 14px; padding: 16px; text-align: center; cursor: pointer;
       transition: 0.15s ease;
     }
+    .file-input:hover { border-color: rgba(148, 163, 184, 0.75); background: rgba(15, 23, 42, 0.55); }
+    .file-input small { display: block; color: var(--text-muted); font-size: 0.7rem; margin-top: 4px; }
 
-    .file-input:hover {
-      border-color: rgba(148, 163, 184, 0.75);
-      background: rgba(15, 23, 42, 0.55);
-    }
-
-    .file-input small {
-      display: block;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      margin-top: 4px;
-    }
-
-    select {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 8px 12px;
-      font-size: 0.8rem;
-      margin-top: 6px;
-      outline: none;
+    select, .search-input {
+      width: 100%; background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.25); color: var(--text);
+      border-radius: 12px; padding: 8px 12px; font-size: 0.8rem; margin-top: 6px; outline: none;
     }
 
     button {
-      width: 100%;
-      margin-top: 18px;
       background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
-      border: none;
-      border-radius: 14px;
-      padding: 10px 0;
-      color: #0f172a;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      transition: transform 0.1s ease;
+      border: none; border-radius: 12px; padding: 9px 12px; color: #0f172a;
+      font-weight: 600; font-size: 0.8rem; letter-spacing: 0.02em; cursor: pointer; transition: transform 0.1s ease;
     }
+    button:active { transform: translateY(1px); }
+    .btn-row { display: flex; gap: 8px; align-items: center; }
+    .btn-secondary { background: rgba(148,163,184,0.12); color: var(--text); }
 
-    button:active {
-      transform: translateY(1px);
-    }
+    .footer { text-align: center; margin-top: 14px; color: rgba(148, 163, 184, 0.5); font-size: 0.65rem; }
 
-    .footer {
-      text-align: center;
-      margin-top: 14px;
-      color: rgba(148, 163, 184, 0.5);
-      font-size: 0.65rem;
-    }
+    .toast { position: fixed; top: 20px; right: 20px; background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.2); border-left: 5px solid var(--success);
+      border-radius: 14px; padding: 14px 16px 14px 14px; min-width: 230px; display: none; gap: 8px; align-items: flex-start; z-index: 9999; }
+    .toast.show { display: flex; animation: fadeIn 0.15s ease-out; }
+    .toast-title { font-size: 0.72rem; margin-bottom: 4px; }
+    .toast-msg { font-size: 0.65rem; color: var(--text-muted); }
+    .dot-success { width: 30px; height: 30px; background: rgba(34, 197, 94, 0.12); border-radius: 999px; display: grid; place-items: center; color: #22c55e; font-weight: 700; }
 
-    .toast {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-left: 5px solid var(--success);
-      border-radius: 14px;
-      padding: 14px 16px 14px 14px;
-      min-width: 230px;
-      display: none;
-      gap: 8px;
-      align-items: flex-start;
-      z-index: 9999;
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px);} to { opacity: 1; transform: translateY(0);} }
 
-    .toast.show {
-      display: flex;
-      animation: fadeIn 0.15s ease-out;
-    }
+    .loading-bar { width: 100%; height: 4px; border-radius: 999px; background: rgba(148, 163, 184, 0.05); overflow: hidden; margin-top: 14px; display: none; }
+    .loading-bar div { height: 100%; width: 40%; background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%); border-radius: 999px; animation: loading 1s linear infinite; }
+    @keyframes loading { 0% { transform: translateX(-120%);} 100% { transform: translateX(300%);} }
 
-    .toast-title {
-      font-size: 0.72rem;
-      margin-bottom: 4px;
-    }
+    .file-name { margin-top: 6px; font-size: 0.7rem; color: var(--text); word-break: break-all; }
+    .error-text { margin-top: 8px; font-size: 0.65rem; color: var(--error); display: none; }
 
-    .toast-msg {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-    }
+    /* LIST */
+    .list-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .list-title { font-size: 1rem; margin: 0; }
 
-    .dot-success {
-      width: 30px;
-      height: 30px;
-      background: rgba(34, 197, 94, 0.12);
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: #22c55e;
-      font-weight: 700;
-    }
+    .table { width: 100%; border-collapse: collapse; }
+    .thead, .row { display: grid; grid-template-columns: 1.2fr .7fr .6fr .9fr .6fr; align-items: center; gap: 10px; }
+    .thead { font-size: 0.7rem; color: var(--text-muted); padding: 6px 8px; border-bottom: 1px solid rgba(148, 163, 184, 0.15); }
+    .row { padding: 10px 8px; border-bottom: 1px dashed rgba(148, 163, 184, 0.12); font-size: 0.8rem; }
+    .row:last-child { border-bottom: none; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 0.78rem; }
+    .pill { display: inline-flex; padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; border: 1px solid rgba(148, 163, 184, 0.22); background: rgba(148, 163, 184, 0.08); }
+    .pill.ok { border-color: rgba(34,197,94,.4); background: rgba(34,197,94,.1); }
+    .pill.fail { border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.08); }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-5px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .skeleton { height: 12px; border-radius: 8px; background: linear-gradient(90deg, rgba(148,163,184,0.08), rgba(148,163,184,0.16), rgba(148,163,184,0.08)); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-    .loading-bar {
-      width: 100%;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.05);
-      overflow: hidden;
-      margin-top: 14px;
-      display: none;
-    }
-
-    .loading-bar div {
-      height: 100%;
-      width: 40%;
-      background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
-      border-radius: 999px;
-      animation: loading 1s linear infinite;
-    }
-
-    @keyframes loading {
-      0% {
-        transform: translateX(-120%);
-      }
-      100% {
-        transform: translateX(300%);
-      }
-    }
-
-    .file-name {
-      margin-top: 6px;
-      font-size: 0.7rem;
-      color: var(--text);
-      word-break: break-all;
-    }
-
-    .error-text {
-      margin-top: 8px;
-      font-size: 0.65rem;
-      color: var(--error);
-      display: none;
-    }
+    .empty { text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 18px 8px; }
 
     /* small screens */
     @media (max-width: 480px) {
-      .card {
-        padding: 22px 18px 20px;
-      }
-      h1 {
-        font-size: 1.15rem;
-      }
+      .card { padding: 22px 18px 20px; }
+      h1 { font-size: 1.15rem; }
+      .thead, .row { grid-template-columns: 1.2fr .8fr .8fr .8fr .8fr; font-size: 0.78rem; }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="card">
-      <div class="badge">
-        <span class="badge-dot">●</span>
-        binary uploader
+  <div class="container">
+    <div class="grid">
+      <!-- Upload card -->
+      <div class="card">
+        <div class="badge"><span class="badge-dot">●</span> binary uploader</div>
+        <h1>Upload your binary</h1>
+        <p class="subtitle">Choose the environment and drop your file. We'll store it securely.</p>
+
+        <form id="uploadForm" enctype="multipart/form-data">
+          <label for="file">Binary file</label>
+          <label for="file" class="file-input" id="fileBox">
+            Click to select or drop file here
+            <small>.bin, .exe, .zip, etc.</small>
+            <input type="file" id="file" name="file" required style="display:none" />
+          </label>
+          <div class="file-name" id="fileName"></div>
+
+          <label for="environment" style="margin-top:14px;">Environment</label>
+          <select id="environment" name="environment">
+            <option value="dev">Development</option>
+            <option value="prod">Production</option>
+          </select>
+
+          <div class="btn-row" style="margin-top:16px;">
+            <button type="submit" id="submitBtn">Upload file</button>
+            <button type="button" class="btn-secondary" id="refreshBtn" title="Refresh list">Refresh</button>
+          </div>
+
+          <div class="loading-bar" id="loader"><div></div></div>
+          <div class="error-text" id="errorText">Upload failed. Try again.</div>
+        </form>
+
+        <p class="footer">Arquitecturas de Software · UPSRJ</p>
       </div>
-      <h1>Upload your binary</h1>
-      <p class="subtitle">Choose the environment and drop your file. We'll store it securely.</p>
 
-      <form id="uploadForm" enctype="multipart/form-data">
-        <label for="file">Binary file</label>
-        <label for="file" class="file-input" id="fileBox">
-          Click to select or drop file here
-          <small>.bin, .exe, .zip, etc.</small>
-          <input type="file" id="file" name="file" required style="display:none" />
-        </label>
-        <div class="file-name" id="fileName"></div>
-
-        <label for="environment" style="margin-top:14px;">Environment</label>
-        <select id="environment" name="environment">
-          <option value="dev">Development</option>
-          <option value="prod">Production</option>
-        </select>
-
-        <button type="submit" id="submitBtn">Upload file</button>
-
-        <div class="loading-bar" id="loader">
-          <div></div>
+      <!-- List card -->
+      <div class="card" id="listCard">
+        <div class="list-head">
+          <h2 class="list-title">Uploaded files</h2>
+          <input id="search" class="search-input" placeholder="Search name or id…" />
         </div>
-        <div class="error-text" id="errorText">Upload failed. Try again.</div>
-      </form>
-
-      <p class="footer">Arquitecturas de Software · UPSRJ</p>
+        <div class="thead">
+          <div>Name</div>
+          <div>Env</div>
+          <div>Status</div>
+          <div>Uploaded</div>
+          <div>Actions</div>
+        </div>
+        <div id="listBody"></div>
+      </div>
     </div>
   </div>
 
   <div class="toast" id="toast">
     <div class="dot-success">✓</div>
     <div>
-      <div class="toast-title" id="toastTitle">Upload complete</div>
-      <div class="toast-msg" id="toastMsg">Your binary was stored successfully.</div>
+      <div class="toast-title" id="toastTitle">Done</div>
+      <div class="toast-msg" id="toastMsg">Action completed.</div>
     </div>
   </div>
 
@@ -312,60 +204,158 @@
     const loader = document.getElementById('loader');
     const errorText = document.getElementById('errorText');
     const submitBtn = document.getElementById('submitBtn');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const listBody = document.getElementById('listBody');
+    const searchInput = document.getElementById('search');
 
+    // === File input UX ===
     fileBox.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', () => {
-      if (fileInput.files.length > 0) {
-        fileName.textContent = fileInput.files[0].name;
-      } else {
-        fileName.textContent = '';
-      }
+      fileName.textContent = fileInput.files.length ? fileInput.files[0].name : '';
     });
 
+    // === Upload handler ===
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorText.style.display = 'none';
       loader.style.display = 'block';
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Uploading...';
+      submitBtn.disabled = true; submitBtn.textContent = 'Uploading…';
 
       const formData = new FormData(form);
 
       try {
-        const response = await fetch('/upload', {
-          method: 'POST',
-          body: formData
-        });
-
-        loader.style.display = 'none';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Upload file';
+        const response = await fetch('/upload', { method: 'POST', body: formData });
+        loader.style.display = 'none'; submitBtn.disabled = false; submitBtn.textContent = 'Upload file';
 
         if (response.ok) {
-          const result = await response.json();
+          const result = await response.json().catch(() => ({}));
           showToast('Upload complete', 'ID: ' + (result.id ?? 'saved'));
-          form.reset();
-          fileName.textContent = '';
+          form.reset(); fileName.textContent = '';
+          await fetchFiles();
         } else {
           errorText.style.display = 'block';
         }
       } catch (error) {
-        console.error("Error uploading file:", error);
-        loader.style.display = 'none';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Upload file';
+        console.error('Error uploading file:', error);
+        loader.style.display = 'none'; submitBtn.disabled = false; submitBtn.textContent = 'Upload file';
         errorText.style.display = 'block';
       }
     });
+
+    // === Listing ===
+    const LIST_ENDPOINTS = ['/binaries', '/files', '/list', '/uploads'];
+
+    async function fetchFiles() {
+      renderSkeleton();
+      let data = null, endpointUsed = null;
+      for (const url of LIST_ENDPOINTS) {
+        try {
+          const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+          if (!res.ok) continue;
+          const json = await res.json();
+          let items = Array.isArray(json) ? json : (json.items || json.binaries || json.files || json.data || []);
+          if (!Array.isArray(items)) continue;
+          data = items.map(normalizeItem).filter(Boolean);
+          endpointUsed = url; break;
+        } catch (_) { /* try next */ }
+      }
+      renderFiles(data || [], endpointUsed);
+    }
+
+    function normalizeItem(x) {
+      if (!x) return null;
+      // Try common field names
+      const id = x.id || x._id || x.uuid || x.pk || null;
+      const name = x.filename || x.name || x.file_name || (typeof x === 'string' ? x : null);
+      const env = x.environment || x.env || x.scope || '—';
+      const statusRaw = x.status || x.state || x.result || 'stored';
+      const uploadedAt = x.created_at || x.uploaded_at || x.timestamp || x.date || x.created || null;
+      const url = x.url || x.download_url || x.path || x.location || null;
+      return { id, name, env, status: String(statusRaw).toLowerCase(), uploadedAt, url };
+    }
+
+    function renderSkeleton() {
+      listBody.innerHTML = '';
+      for (let i = 0; i < 6; i++) {
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.innerHTML = `
+          <div class="skeleton" style="height:12px"></div>
+          <div class="skeleton" style="height:12px"></div>
+          <div class="skeleton" style="height:12px"></div>
+          <div class="skeleton" style="height:12px"></div>
+          <div class="skeleton" style="height:12px"></div>`;
+        listBody.appendChild(row);
+      }
+    }
+
+    function renderFiles(items, endpointUsed) {
+      const q = (searchInput.value || '').trim().toLowerCase();
+      const filtered = q ? items.filter(it => (it.name||'').toLowerCase().includes(q) || (it.id||'').toLowerCase().includes(q)) : items;
+
+      if (!filtered.length) {
+        listBody.innerHTML = `<div class="empty">${endpointUsed ? 'No files found.' : 'No endpoint responded. Expose GET /binaries (or /files) returning an array.'}</div>`;
+        return;
+      }
+
+      listBody.innerHTML = '';
+      for (const it of filtered.slice(0, 100)) {
+        const row = document.createElement('div');
+        row.className = 'row';
+        const statusClass = it.status && /ok|done|stored|success/i.test(it.status) ? 'ok' : (/fail|err|bad/i.test(it.status) ? 'fail' : '');
+        const dateTxt = it.uploadedAt ? formatDate(it.uploadedAt) : '—';
+        const nameTxt = it.name || '—';
+        row.innerHTML = `
+          <div title="${nameTxt}">${truncate(nameTxt, 44)}</div>
+          <div><span class="pill">${escapeHtml(it.env || '—')}</span></div>
+          <div><span class="pill ${statusClass}">${escapeHtml(it.status || '—')}</span></div>
+          <div>${dateTxt}</div>
+          <div class="btn-row">
+            ${it.url ? `<a class="btn-secondary" href="${it.url}" download>Download</a>` : ''}
+            ${it.id ? `<button class="btn-secondary" data-copy="${it.id}">Copy ID</button>` : ''}
+          </div>`;
+        listBody.appendChild(row);
+      }
+
+      // Wire copy buttons
+      listBody.querySelectorAll('button[data-copy]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const val = btn.getAttribute('data-copy');
+          try { await navigator.clipboard.writeText(val); showToast('Copied', 'ID copied to clipboard'); } catch(_){}
+        });
+      });
+    }
+
+    function formatDate(input) {
+      try {
+        const d = new Date(input);
+        if (isNaN(d.getTime())) return String(input);
+        return d.toLocaleString();
+      } catch { return String(input); }
+    }
+
+    function truncate(s, n) { return s.length > n ? s.slice(0, n - 1) + '…' : s; }
+    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); }
+
+    searchInput.addEventListener('input', () => fetchFiles());
+    refreshBtn.addEventListener('click', () => fetchFiles());
 
     function showToast(title, msg) {
       document.getElementById('toastTitle').textContent = title;
       document.getElementById('toastMsg').textContent = msg;
       toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
+      setTimeout(() => toast.classList.remove('show'), 3000);
     }
+
+    // Try enable drag & drop
+    ;(function enableDropZone(){
+      ['dragenter','dragover'].forEach(ev => fileBox.addEventListener(ev, (e)=>{ e.preventDefault(); fileBox.style.borderColor='rgba(148,163,184,0.75)'; }));
+      ;['dragleave','drop'].forEach(ev => fileBox.addEventListener(ev, (e)=>{ e.preventDefault(); fileBox.style.borderColor='rgba(148,163,184,0.35)'; }));
+      fileBox.addEventListener('drop', (e)=>{ e.preventDefault(); if (e.dataTransfer?.files?.length){ fileInput.files = e.dataTransfer.files; fileInput.dispatchEvent(new Event('change')); } });
+    })();
+
+    // Initial load
+    fetchFiles();
   </script>
 </body>
 </html>

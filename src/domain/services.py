@@ -1,15 +1,34 @@
-from cryptography.hazmat.primitives import hashes, serialization
-from cryptography.hazmat.primitives.asymmetric import padding
+from src.domain.models import BinaryFile
+from typing import Tuple
+from src.common.vars import DATA_DIR, SIGNED_DIR
+import os
+import hashlib
 
 class SigningService:
-    def __init__(self, key_loader):
-        self.key_loader = key_loader
-
-    def sign_binary(self, binary_data: bytes,private_key_path: str):
-        private_key = self.key_loader(private_key_path)
-        return private_key.sign(
-            binary_data,
-            padding.PKCS1v15(),
-            hashes.SHA256()
-        )
+    
+    def __init__(self, output_dir: str = SIGNED_DIR):
+        self.output_dir = output_dir
+    
+    def sign_file(self, binary: BinaryFile) -> Tuple[str, str]:
+        try:
+            source_path = os.path.join(DATA_DIR, binary.filename)
+            signed_path = os.path.join(self.output_dir)
         
+            # Compute SHA-256 signature
+            sha256_hash = hashlib.sha256()
+            with open(source_path, 'rb') as file:
+                for block in iter(lambda: file.read(4096), b""):
+                    sha256_hash.update(block)
+            signature = sha256_hash.hexdigest()
+            
+            # Create signed copy
+            with open(source_path, 'rb') as src, open(signed_path, 'wb') as dst:
+                dst.write(src.read())
+                dst.write(b"\n\n# SIGNATURE: " + signature.encode("utf-8"))
+            
+            print(f"[SigningService] File '{binary.filename}' signed successfully.")            
+            return signature, signed_path
+        
+        except Exception as e:
+            print(f"[SigningService] Error while signing '{binary.filename}':{e}")
+            raise

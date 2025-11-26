@@ -16,5 +16,106 @@
         "uploaded_at": "2025-11-12T22:22:36.502187",
         "signed_path": null,
         "signature": null
+    },
+    {
+        "id": "12cd7e5a-cf41-41d7-9e99-4d7a8a72a839",
+        "filename": "data/binaries/12cd7e5a-cf41-41d7-9e99-4d7a8a72a83920251124194424.bin",
+        "environment": "prod",
+        "status": "pending",
+        "uploaded_at": "2025-11-24T19:44:24.270133",
+        "signed_path": null,
+        "signature": null
+    },
+    {
+        "id": "ed204941-8986-425b-8c57-934a21b5a11f",
+        "filename": "data/binaries/ed204941-8986-425b-8c57-934a21b5a11f20251124194438.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T19:44:38.116125",
+        "signed_path": null,
+        "signature": null
+    },
+    {
+        "id": "bc6f84e6-ff08-4197-b3bf-eca124ea46c5",
+        "filename": "data/binaries/bc6f84e6-ff08-4197-b3bf-eca124ea46c520251124194455.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T19:44:55.144854",
+        "signed_path": null,
+        "signature": null
+    },
+    {
+        "id": "e087b218-bae2-48e4-b0bc-6213ef93c05d",
+        "filename": "data/binaries/e087b218-bae2-48e4-b0bc-6213ef93c05d20251124195556.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T19:55:56.036768",
+        "signed_path": "data/signed/signed_e087b218-bae2-48e4-b0bc-6213ef93c05d20251124195556.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa"
+    },
+    {
+        "id": "7dbdaa82-f1b2-4945-9754-68f26c463638",
+        "filename": "data/binaries/7dbdaa82-f1b2-4945-9754-68f26c46363820251124195620.bin",
+        "environment": "prod",
+        "status": "pending",
+        "uploaded_at": "2025-11-24T19:56:20.685624",
+        "signed_path": null,
+        "signature": null
+    },
+    {
+        "id": "e5efc51e-842b-408b-8616-15e4560738cf",
+        "filename": "data/binaries/e5efc51e-842b-408b-8616-15e4560738cf20251124220545.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T22:05:45.107810",
+        "signed_path": "data/signed/signed_e5efc51e-842b-408b-8616-15e4560738cf20251124220545.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa"
+    },
+    {
+        "id": "84af27ce-46bd-4440-818a-7a1138cb2ff1",
+        "filename": "data/binaries/84af27ce-46bd-4440-818a-7a1138cb2ff120251124224533.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T22:45:33.116194",
+        "signed_path": "data/signed/signed_84af27ce-46bd-4440-818a-7a1138cb2ff120251124224533.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa"
+    },
+    {
+        "id": "c51f2a4b-8ecc-4806-8dac-1aa480e42e86",
+        "filename": "data/binaries/c51f2a4b-8ecc-4806-8dac-1aa480e42e8620251124225338.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T22:53:38.430248",
+        "signed_path": "data/signed/signed_c51f2a4b-8ecc-4806-8dac-1aa480e42e8620251124225338.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa"
+    },
+    {
+        "id": "15fcbe2f-190b-419f-a9a9-a67dd75c460e",
+        "filename": "data/binaries/15fcbe2f-190b-419f-a9a9-a67dd75c460e20251124225818.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-24T22:58:18.596587",
+        "signed_path": "data/signed/signed_15fcbe2f-190b-419f-a9a9-a67dd75c460e20251124225818.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa"
+    },
+    {
+        "id": "a8dfc210-5ef0-493c-9212-38f0d53ad6b6",
+        "filename": "data/binaries/a8dfc210-5ef0-493c-9212-38f0d53ad6b620251126183736.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-26T18:37:36.987203",
+        "signed_path": "/workspaces/upsrj-proyecto-arquitecturas-de-software/data/signed/signed_a8dfc210-5ef0-493c-9212-38f0d53ad6b620251126183736.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa",
+        "timestamp": "2025-11-26T18:37:36.987305"
+    },
+    {
+        "id": "1bf8c080-dec3-470e-b974-7c56dec5b527",
+        "filename": "data/binaries/1bf8c080-dec3-470e-b974-7c56dec5b52720251126183751.bin",
+        "environment": "dev",
+        "status": "signed",
+        "uploaded_at": "2025-11-26T18:37:51.031682",
+        "signed_path": "/workspaces/upsrj-proyecto-arquitecturas-de-software/data/signed/signed_1bf8c080-dec3-470e-b974-7c56dec5b52720251126183751.bin",
+        "signature": "c2138f3dd415046ae96c7cbd4b6e28516be6ab2741bed16b5bcec9366e48d3fa",
+        "timestamp": "2025-11-26T18:37:51.031772"
     }
 ]

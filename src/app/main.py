@@ -4,7 +4,7 @@
 import sys
 from pathlib import Path
 
-# Ajuste de rutas para poder hacer imports tipo "from src..."
+
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 from flask import Flask
@@ -17,22 +17,22 @@ from src.common.vars import HOME_HOST
 def create_app() -> Flask:
     app = Flask(__name__, template_folder="templates")
 
-    # --- CONFIGURACIÓN DEL CORREO (como en el proyecto 2 del profe) ---
+
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
     app.config["MAIL_PORT"] = 587
     app.config["MAIL_USE_TLS"] = True
 
-    # ⚠️ Demo: credenciales usadas en el proyecto 2
-    # En un proyecto real, usa variables de entorno
-    app.config["MAIL_USERNAME"] = "proyecto3287@gmail.com"
-    app.config["MAIL_PASSWORD"] = "gkxy knmh fuav xdex"
+
+    app.config["MAIL_USERNAME"] = "rafa2005w@gmail.com"
+    app.config["MAIL_PASSWORD"] = "xtkn hpwd nwlf kada"
+
 
     app.config["MAIL_DEFAULT_SENDER"] = app.config["MAIL_USERNAME"]
 
-    # Inicializar Flask-Mail y colgarlo en app
-    app.mail = Mail(app)
 
-    # Registrar rutas
+    app.config["MAIL_RECIPIENT"] = "023000741@upsrj.edu.mx"
+
+    app.mail = Mail(app)
     register_routes(app)
     return app
 
